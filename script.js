@@ -113,3 +113,57 @@ fectchStudents().then((data1)=>console.log(data1.language)
 ).catch((error)=>{
   console.error("Name does not Exist",error)
 })
+
+
+
+// ASYNC AND AWAIT: used to simplify handling asynchronous operations using promises
+
+  //Basic syntax
+async function myFunction(){
+  const text = "Hello"
+  return text;
+}
+
+console.log(myFunction());
+
+
+
+const fetchInfo = async () =>{
+  let y = await "OG is an OG";
+  return y;
+};
+
+fetchInfo().then((y)=>{console.log(y)})
+
+
+
+function opera_method(){
+  let first_promise = new Promise ((resolve)=> resolve ("Hello") );
+  let second_promise =new Promise((resolve)=>{
+    setTimeout(()=>{
+      resolve("Geekfor Geeks...")
+    },10000)
+  });
+  let combined_promise = Promise.all([first_promise,second_promise])
+  return combined_promise;
+
+}
+
+async function display(){
+  let data = await opera_method();
+  console.log(data)
+
+}
+
+display();
+
+const fetchApi = async ()=>{
+  try{
+    let response = await fetch ("https://jsonplaceholder.typicode.com/users");
+    let data = await response.json();
+    return data;
+  }catch(error){
+    console.timeLog("Failed to fetch",error);
+  }
+};
+fetchApi().then((result)=>console.log(result))
